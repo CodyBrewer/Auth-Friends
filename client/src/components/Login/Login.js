@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const Login = () => {
+const Login = props => {
   const [loginCredentials, setLoginCredentials] = useState({
     username: "",
     password: ""
@@ -17,6 +17,7 @@ const Login = () => {
       .catch(err => {
         console.log(err.message);
       });
+    props.history.push("/friends");
   };
 
   const handleLoginChange = evt => {

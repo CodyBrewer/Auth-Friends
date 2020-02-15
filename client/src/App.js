@@ -1,10 +1,10 @@
 import React from "react";
-import Login from "./components/Login/Login";
+import Routes from "./routes/Routes";
 
 function App() {
   return (
     <>
-      <Login />
+      <Routes />
     </>
   );
 }
