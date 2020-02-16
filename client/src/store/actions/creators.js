@@ -13,3 +13,16 @@ export const fetchFriends = () => dispatch => {
       dispatch({ type: Types.FETCH_FAILURE, payload: err.response })
     );
 };
+
+export const addFriend = friend => dispatch => {
+  dispatch({ type: Types.ADD_FRIEND });
+
+  axiosWithAuth()
+    .post(`${URL}friends/`, friend)
+    .then(res =>
+      dispatch({ type: Types.ADD_FRIEND_SUCCESS, payload: res.data })
+    )
+    .catch(err =>
+      dispatch({ type: Types.ADD_FRIEND_FAILURE, payload: err.response })
+    );
+};

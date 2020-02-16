@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchFriends } from "../../store/actions";
 import { BarLoader } from "react-spinners";
+import FriendForm from "./FriendForm";
 
 const FriendsList = () => {
   const friends = useSelector(state => state.friends.friends);
@@ -30,6 +31,7 @@ const FriendsList = () => {
         </>
       )}
       {error && <p>{error}</p>}
+      <FriendForm />
     </>
   );
 };

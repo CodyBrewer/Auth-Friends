@@ -29,6 +29,24 @@ export const friendReducer = (state = initialState, action) => {
         isFetching: false,
         error: action.payload
       };
+    case Types.ADD_FRIEND:
+      return {
+        ...state,
+        addingFriend: true,
+        error: ""
+      };
+    case Types.ADD_FRIEND_SUCCESS:
+      return {
+        ...state,
+        addingFriend: false,
+        friends: action.payload
+      };
+    case Types.ADD_FRIEND_FAILURE:
+      return {
+        ...state,
+        addingFriend: false,
+        error: action.payload
+      };
     default:
       return {
         ...state
