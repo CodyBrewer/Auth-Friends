@@ -4,7 +4,7 @@ const initialState = {
   friends: [],
   isFetching: false,
   addingFriend: false,
-  deleteingFriend: false,
+  deletingFriend: false,
   error: ""
 };
 
@@ -45,6 +45,24 @@ export const friendReducer = (state = initialState, action) => {
       return {
         ...state,
         addingFriend: false,
+        error: action.payload
+      };
+    case Types.DELETE_FRIEND:
+      return {
+        ...state,
+        deletingFriend: true,
+        error: ""
+      };
+    case Types.DELETE_FRIEND_SUCCESS:
+      return {
+        ...state,
+        deletingFriend: false,
+        friends: action.payload
+      };
+    case Types.DELETE_FRIEND_FAILURE:
+      return {
+        ...state,
+        deletingFriend: false,
         error: action.payload
       };
     default:

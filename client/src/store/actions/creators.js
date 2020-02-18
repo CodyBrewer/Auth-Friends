@@ -26,3 +26,16 @@ export const addFriend = friend => dispatch => {
       dispatch({ type: Types.ADD_FRIEND_FAILURE, payload: err.response })
     );
 };
+
+export const deleteFriend = id => dispatch => {
+  dispatch({ type: Types.DELETE_FRIEND });
+
+  axiosWithAuth()
+    .delete(`${URL}friends/${id}`)
+    .then(res =>
+      dispatch({ type: Types.DELETE_FRIEND_SUCCESS, payload: res.data })
+    )
+    .catch(err => {
+      dispatch({ type: Types.DELETE_FRIEND_FAILURE, payload: err.response });
+    });
+};

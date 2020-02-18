@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchFriends } from "../../store/actions";
+import { fetchFriends, deleteFriend } from "../../store/actions";
 import { BarLoader } from "react-spinners";
 import FriendForm from "./FriendForm";
 
@@ -14,6 +14,11 @@ const FriendsList = () => {
     dispatch(fetchFriends());
   }, []);
 
+  const handleDelete = id => {
+    // evt.preventDefault();
+    dispatch(deleteFriend(id));
+  };
+
   return (
     <>
       {isFetching ? (
@@ -26,6 +31,14 @@ const FriendsList = () => {
               <h2>{friend.name}</h2>
               <p>{friend.age}</p>
               <a href={(`mailto:`, friend.email)}>{friend.email}</a>
+              <button
+                onClick={e => {
+                  e.preventDefault();
+                  handleDelete(friend.id);
+                }}
+              >
+                Delete
+              </button>
             </>
           ))}
         </>
